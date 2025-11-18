@@ -655,7 +655,7 @@ async function handleUserMessage(text) {
             },
             body: JSON.stringify({
                 contents: conversationHistory,
-                system_Instruction: {
+                system_instruction: {
                     parts: [{
                         text: `You are a friendly study buddy helping a NEET student revise ${state.subject} - ${state.topic}. 
 
@@ -929,6 +929,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
+
 
 
 
