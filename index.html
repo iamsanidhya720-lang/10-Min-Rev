@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>10-Min's Revision - Your AI Study Buddy for NEET</title>
+    <title>10-Min Revision - Your AI Study Buddy for NEET</title>
     <link rel="icon" href="data:,">
     <style>
         * {
@@ -675,6 +675,7 @@ function selectSubject(subject) {
 }
 
 async function startSession() {
+    console.log('Start session called');
     state.topic = document.getElementById('topicInput').value.trim();
     
     if (!state.subject || !state.topic) {
@@ -682,22 +683,33 @@ async function startSession() {
         return;
     }
     
+    console.log('Subject:', state.subject, 'Topic:', state.topic);
+    
     state.screen = 'session';
     state.isActive = true;
     state.timeLeft = 600;
     state.messages = [];
     
+    console.log('Updating UI...');
     updateUI();
     
-    document.getElementById('sessionSubject').textContent = state.subject;
-    document.getElementById('sessionTopic').textContent = state.topic;
+    const sessionSubjectEl = document.getElementById('sessionSubject');
+    const sessionTopicEl = document.getElementById('sessionTopic');
+    
+    console.log('Session elements:', sessionSubjectEl, sessionTopicEl);
+    
+    if (sessionSubjectEl) sessionSubjectEl.textContent = state.subject;
+    if (sessionTopicEl) sessionTopicEl.textContent = state.topic;
     
     const greeting = `Hey! Let's spend the next 10 minutes understanding ${state.topic} in ${state.subject}. I'm here as your study buddy, not to quiz you, but to explore this concept together. So tell me, what do you already know about ${state.topic}?`;
     
     state.messages.push({ role: 'assistant', content: greeting });
     displayMessages();
+    
+    console.log('Starting speech...');
     await speak(greeting);
     
+    console.log('Starting timer...');
     startTimer();
 }
 
@@ -997,4 +1009,3 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
-
