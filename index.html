@@ -887,9 +887,36 @@ function updateUI() {
     const sessionScreen = document.getElementById('sessionScreen');
     const summaryScreen = document.getElementById('summaryScreen');
     
-    if (setupScreen) setupScreen.style.display = state.screen === 'setup' ? 'flex' : 'none';
-    if (sessionScreen) sessionScreen.style.display = state.screen === 'session' ? 'flex' : 'none';
-    if (summaryScreen) summaryScreen.style.display = state.screen === 'summary' ? 'flex' : 'none';
+    // Show/hide screens
+    if (setupScreen) {
+        if (state.screen === 'setup') {
+            setupScreen.classList.remove('hidden');
+            setupScreen.style.display = 'flex';
+        } else {
+            setupScreen.classList.add('hidden');
+            setupScreen.style.display = 'none';
+        }
+    }
+    
+    if (sessionScreen) {
+        if (state.screen === 'session') {
+            sessionScreen.classList.remove('hidden');
+            sessionScreen.style.display = 'flex';
+        } else {
+            sessionScreen.classList.add('hidden');
+            sessionScreen.style.display = 'none';
+        }
+    }
+    
+    if (summaryScreen) {
+        if (state.screen === 'summary') {
+            summaryScreen.classList.remove('hidden');
+            summaryScreen.style.display = 'flex';
+        } else {
+            summaryScreen.classList.add('hidden');
+            summaryScreen.style.display = 'none';
+        }
+    }
     
     if (state.screen === 'session') {
         const micButton = document.getElementById('micButton');
